@@ -347,13 +347,49 @@
         /* Responsive Text Sizes */
         @media (max-width: 640px) {
             .main-title {
-                font-size: 1.5rem;
-                line-height: 1.3 !important;
-                padding: 0.5rem 0.25rem !important;
+                font-size: 1.15rem;
+                line-height: 1.2 !important;
+                padding: 0.2rem 0.1rem !important;
+                margin: 0.15rem 0 !important;
             }
             .groom-name {
-                font-size: 1.75rem;
-                line-height: 1.3 !important;
+                font-size: 1.4rem;
+                line-height: 1.2 !important;
+                padding: 0.2rem 0.1rem !important;
+                margin: 0.15rem 0 !important;
+            }
+            .bismillah {
+                font-size: 0.9rem;
+                padding: 0.15rem 0 !important;
+                margin: 0.1rem 0 !important;
+            }
+            .card-container {
+                padding: 0.75rem 0.5rem !important;
+            }
+            .ornament {
+                width: 40px;
+                height: 40px;
+            }
+            .ornament::before,
+            .ornament::after {
+                width: 12px;
+                height: 12px;
+            }
+            /* Reduce all text sizes */
+            p, div {
+                font-size: 0.875rem !important;
+            }
+            .text-lg {
+                font-size: 1rem !important;
+            }
+            .text-xl {
+                font-size: 1.1rem !important;
+            }
+            .text-2xl {
+                font-size: 1.3rem !important;
+            }
+            .text-3xl {
+                font-size: 1.5rem !important;
             }
         }
         
@@ -415,7 +451,7 @@
                 invite: "نتشرف بدعوتكم لحضور وليمة زفاف",
                 ceremony: "",
                 of: "",
-                groom: "الحاج/حسنین سردار",
+                groom: "حسنین سردار",
                 date: "بتاريخ 17 نوفمبر 2025",
                 time: "الساعة 2:00 ظهرًا",
                 venue: "في المنزل",
@@ -490,9 +526,9 @@
             };
             
             return (
-                <div className="h-screen pattern-bg py-2 px-4 overflow-hidden flex flex-col">
+                <div className="h-screen pattern-bg pt-1 pb-2 md:py-2 px-4 overflow-hidden flex flex-col">
                     {/* Language Toggle */}
-                    <div className="flex justify-end mb-2 max-w-4xl mx-auto w-full">
+                    <div className="flex justify-end mb-1 md:mb-2 max-w-4xl mx-auto w-full">
                         <div className="flex flex-wrap gap-1 bg-white rounded-full p-1 shadow-lg scale-in">
                             <button
                                 onClick={() => setLanguage('en')}
@@ -530,8 +566,8 @@
                     </div>
                     
                     {/* Main Invitation Card */}
-                    <div className="max-w-4xl mx-auto flex-1 flex items-center justify-center w-full py-2">
-                        <div className={`bg-gradient-to-br from-white via-amber-50 to-yellow-50 gold-border rounded-3xl card-shadow p-4 md:p-6 relative overflow-hidden w-full ${getTextClass()}`}>
+                    <div className="max-w-4xl mx-auto flex-1 flex items-center justify-center w-full pt-0 pb-1 md:py-2">
+                        <div className={`bg-gradient-to-br from-white via-amber-50 to-yellow-50 gold-border rounded-3xl card-shadow p-2 md:p-6 relative overflow-hidden w-full card-container ${getTextClass()}`}>
                             {/* Decorative Corner Elements */}
                             <div className="absolute top-4 left-4 opacity-20">
                                 <div className="ornament"></div>
@@ -547,23 +583,23 @@
                             </div>
                             
                             {/* Content */}
-                            <div key={animationKey} className="relative z-10 text-center space-y-2" style={{ overflow: 'visible', padding: '0.25rem 0' }}>
+                            <div key={animationKey} className="relative z-10 text-center space-y-1 md:space-y-2 content-spacing" style={{ overflow: 'visible', padding: '0.15rem 0' }}>
                                 {/* Bismillah */}
-                                <div className="text-center mb-1 fade-in-up">
+                                <div className="text-center mb-0 md:mb-1 fade-in-up">
                                     <p className="bismillah">
                                         بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
                                     </p>
                                 </div>
                                 
                                 {/* Title */}
-                                <div className="scale-in py-1 my-1" style={{ overflow: 'visible', minHeight: 'auto' }}>
+                                <div className="scale-in py-0.5 my-0.5 md:py-1 md:my-1" style={{ overflow: 'visible', minHeight: 'auto' }}>
                                     <h1 className={`main-title text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-yellow-600 to-amber-700 pulse-animation ${getTextClass()}`} style={{ display: 'block', visibility: 'visible', opacity: 1, overflow: 'visible', lineHeight: '1.3', padding: '0.5rem 0.25rem', margin: '0', minHeight: 'auto', maxHeight: 'none' }}>
                                         {t.title}
                                     </h1>
                                 </div>
                                 
                                 {/* Decorative Line */}
-                                <div className="slide-in-left delay-100 flex items-center justify-center gap-3 my-2" style={{ overflow: 'visible' }}>
+                                <div className="slide-in-left delay-100 flex items-center justify-center gap-2 md:gap-3 my-1 md:my-2" style={{ overflow: 'visible' }}>
                                     <div className="h-px bg-gradient-to-r from-transparent via-amber-400 to-amber-600 flex-1 max-w-16"></div>
                                     <div className="w-2 h-2 rounded-full bg-amber-600 float-animation"></div>
                                     <div className="h-px bg-gradient-to-r from-amber-600 via-amber-400 to-transparent flex-1 max-w-16"></div>
@@ -593,21 +629,21 @@
                                 )}
                                 
                                 {/* Groom Name */}
-                                <div className="scale-in delay-300 py-1 my-1" style={{ overflow: 'visible', minHeight: 'auto' }}>
+                                <div className="scale-in delay-300 py-0.5 my-0.5 md:py-1 md:my-1" style={{ overflow: 'visible', minHeight: 'auto' }}>
                                     <h2 className={`groom-name text-3xl md:text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-yellow-600 to-amber-700 float-animation ${getTextClass()}`} style={{ display: 'block', visibility: 'visible', opacity: 1, overflow: 'visible', lineHeight: '1.3', padding: '0.5rem 0.25rem', margin: '0', minHeight: 'auto', maxHeight: 'none' }}>
                                         {t.groom}
                                     </h2>
                                 </div>
                                 
                                 {/* Decorative Line */}
-                                <div className="slide-in-right delay-400 flex items-center justify-center gap-3 my-2">
+                                <div className="slide-in-right delay-400 flex items-center justify-center gap-2 md:gap-3 my-1 md:my-2">
                                     <div className="h-px bg-gradient-to-r from-transparent via-emerald-400 to-emerald-600 flex-1 max-w-16"></div>
                                     <div className="w-2 h-2 rounded-full bg-emerald-600 pulse-animation"></div>
                                     <div className="h-px bg-gradient-to-r from-emerald-600 via-emerald-400 to-transparent flex-1 max-w-16"></div>
                                 </div>
                                 
                                 {/* Event Details */}
-                                <div className={`fade-in-up delay-400 space-y-1 text-gray-800 ${getTextClass()}`}>
+                                <div className={`fade-in-up delay-400 space-y-0.5 md:space-y-1 text-gray-800 ${getTextClass()}`}>
                                     <div className="text-lg md:text-xl font-semibold text-amber-800 scale-in delay-500">
                                         {t.date}
                                     </div>
@@ -623,18 +659,18 @@
                                 
                                 {/* Closing Message */}
                                 {t.closingMessage && (
-                                    <div className={`fade-in-up delay-500 pt-2 text-base md:text-lg text-gray-700 italic leading-relaxed ${getTextClass()}`}>
+                                    <div className={`fade-in-up delay-500 pt-1 md:pt-2 text-sm md:text-base text-gray-700 italic leading-relaxed ${getTextClass()}`}>
                                         {t.closingMessage}
                                     </div>
                                 )}
                                 
                                 {/* Action Button */}
-                                <div className="fade-in-up delay-500 pt-3 flex justify-center items-center">
+                                <div className="fade-in-up delay-500 pt-1.5 md:pt-3 flex justify-center items-center">
                                     <button
                                         onClick={handleViewMap}
-                                        className="map-btn text-white px-6 py-2 rounded-full text-sm md:text-base font-semibold shadow-lg flex items-center gap-2 pulse-animation hover:scale-110 transition-transform"
+                                        className="map-btn text-white px-4 py-1.5 md:px-6 md:py-2 rounded-full text-xs md:text-sm font-semibold shadow-lg flex items-center gap-1.5 md:gap-2 pulse-animation hover:scale-110 transition-transform"
                                     >
-                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg className="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                         </svg>
