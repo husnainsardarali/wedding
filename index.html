@@ -30,8 +30,10 @@
         body {
             font-family: 'Playfair Display', serif;
             background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
-            min-height: 100vh;
-            overflow-x: hidden;
+            height: 100vh;
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
         }
         
         .arabic-text {
@@ -74,15 +76,86 @@
             border: 3px solid #d4af37;
         }
         
-        /* Fade In Animation */
+        /* Enhanced Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(30px) scale(0.9);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes rotateIn {
+            from {
+                opacity: 0;
+                transform: rotate(-10deg) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: rotate(0deg) scale(1);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+            100% {
+                background-position: 1000px 0;
             }
         }
         
@@ -90,18 +163,44 @@
             animation: fadeInUp 0.8s ease-out forwards;
         }
         
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+        
+        .scale-in {
+            animation: scaleIn 0.8s ease-out forwards;
+        }
+        
+        .rotate-in {
+            animation: rotateIn 0.8s ease-out forwards;
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
         .delay-100 { animation-delay: 0.1s; opacity: 0; }
         .delay-200 { animation-delay: 0.2s; opacity: 0; }
         .delay-300 { animation-delay: 0.3s; opacity: 0; }
         .delay-400 { animation-delay: 0.4s; opacity: 0; }
+        .delay-500 { animation-delay: 0.5s; opacity: 0; }
         
-        /* Decorative Element */
+        /* Decorative Element with Animation */
         .ornament {
             width: 60px;
             height: 60px;
             border: 2px solid #d4af37;
             position: relative;
             transform: rotate(45deg);
+            animation: pulse 3s ease-in-out infinite;
         }
         
         .ornament::before,
@@ -115,6 +214,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            animation: float 4s ease-in-out infinite;
         }
         
         /* Language Toggle Button */
@@ -153,13 +253,108 @@
             box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
         }
         
+        /* Groom Name Visibility Fix */
+        .groom-name {
+            line-height: 1.4 !important;
+            padding: 1rem 0.5rem !important;
+            margin: 1rem 0 !important;
+            overflow: visible !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            min-height: auto !important;
+            max-height: none !important;
+            text-align: center !important;
+        }
+        
+        .urdu-text .groom-name,
+        .arabic-text .groom-name {
+            white-space: normal !important;
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+            text-align: center !important;
+            display: block !important;
+            line-height: 1.5 !important;
+        }
+        
+        /* Bismillah Styling */
+        .bismillah {
+            font-family: 'Noto Naskh Arabic', serif;
+            direction: rtl;
+            font-size: 1.5rem;
+            color: #d4af37;
+            font-weight: 600;
+            text-align: center;
+            letter-spacing: 3px;
+            line-height: 1.8;
+            padding: 0.5rem 0;
+            margin: 0.25rem 0;
+            text-shadow: 0 2px 4px rgba(212, 175, 55, 0.3);
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        
+        @media (max-width: 640px) {
+            .bismillah {
+                font-size: 1.1rem;
+                letter-spacing: 2px;
+            }
+        }
+        
+        /* Ensure content wrapper doesn't clip */
+        .relative.z-10 {
+            overflow: visible !important;
+        }
+        
+        /* Main Title Visibility Fix */
+        .main-title {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            overflow: visible !important;
+            line-height: 1.4 !important;
+            padding: 1rem 0.5rem !important;
+            margin: 0.5rem 0 !important;
+            min-height: auto !important;
+            max-height: none !important;
+            text-align: center !important;
+        }
+        
+        .urdu-text .main-title,
+        .arabic-text .main-title {
+            white-space: normal !important;
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+            text-align: center !important;
+            display: block !important;
+            line-height: 1.5 !important;
+            padding: 1rem 0.5rem !important;
+        }
+        
+        /* Compact Layout for Single Page */
+        .compact-spacing {
+            margin: 0.25rem 0 !important;
+            padding: 0.25rem 0 !important;
+        }
+        
         /* Responsive Text Sizes */
         @media (max-width: 640px) {
             .main-title {
-                font-size: 1.75rem;
+                font-size: 1.5rem;
+                line-height: 1.3 !important;
+                padding: 0.5rem 0.25rem !important;
             }
             .groom-name {
+                font-size: 1.75rem;
+                line-height: 1.3 !important;
+            }
+        }
+        
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .main-title {
                 font-size: 2rem;
+            }
+            .groom-name {
+                font-size: 2.5rem;
             }
         }
     </style>
@@ -266,13 +461,13 @@
             };
             
             return (
-                <div className="min-h-screen pattern-bg py-8 px-4">
+                <div className="h-screen pattern-bg py-2 px-4 overflow-hidden flex flex-col">
                     {/* Language Toggle */}
-                    <div className="flex justify-end mb-4 max-w-4xl mx-auto">
-                        <div className="flex gap-2 bg-white rounded-full p-1 shadow-lg">
+                    <div className="flex justify-end mb-2 max-w-4xl mx-auto w-full">
+                        <div className="flex gap-2 bg-white rounded-full p-1 shadow-lg scale-in">
                             <button
                                 onClick={() => setLanguage('en')}
-                                className={`lang-btn px-4 py-2 rounded-full text-sm font-semibold transition-all ${
+                                className={`lang-btn px-3 py-1 rounded-full text-xs font-semibold transition-all ${
                                     language === 'en' ? 'active text-white' : 'text-gray-700 hover:bg-gray-100'
                                 }`}
                             >
@@ -280,7 +475,7 @@
                             </button>
                             <button
                                 onClick={() => setLanguage('urdu')}
-                                className={`lang-btn px-4 py-2 rounded-full text-sm font-semibold transition-all ${
+                                className={`lang-btn px-3 py-1 rounded-full text-xs font-semibold transition-all ${
                                     language === 'urdu' ? 'active text-white' : 'text-gray-700 hover:bg-gray-100'
                                 }`}
                             >
@@ -288,7 +483,7 @@
                             </button>
                             <button
                                 onClick={() => setLanguage('ar')}
-                                className={`lang-btn px-4 py-2 rounded-full text-sm font-semibold transition-all ${
+                                className={`lang-btn px-3 py-1 rounded-full text-xs font-semibold transition-all ${
                                     language === 'ar' ? 'active text-white' : 'text-gray-700 hover:bg-gray-100'
                                 }`}
                             >
@@ -298,8 +493,8 @@
                     </div>
                     
                     {/* Main Invitation Card */}
-                    <div className="max-w-4xl mx-auto">
-                        <div className={`bg-gradient-to-br from-white via-amber-50 to-yellow-50 gold-border rounded-3xl card-shadow p-8 md:p-12 relative overflow-hidden ${getTextClass()}`}>
+                    <div className="max-w-4xl mx-auto flex-1 flex items-center justify-center w-full py-2">
+                        <div className={`bg-gradient-to-br from-white via-amber-50 to-yellow-50 gold-border rounded-3xl card-shadow p-4 md:p-6 relative overflow-hidden w-full ${getTextClass()}`}>
                             {/* Decorative Corner Elements */}
                             <div className="absolute top-4 left-4 opacity-20">
                                 <div className="ornament"></div>
@@ -315,85 +510,87 @@
                             </div>
                             
                             {/* Content */}
-                            <div key={animationKey} className="relative z-10 text-center space-y-6">
+                            <div key={animationKey} className="relative z-10 text-center space-y-2" style={{ overflow: 'visible', padding: '0.25rem 0' }}>
+                                {/* Bismillah */}
+                                <div className="text-center mb-1 fade-in-up">
+                                    <p className="bismillah">
+                                        بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
+                                    </p>
+                                </div>
+                                
                                 {/* Title */}
-                                <h1 className={`main-title fade-in-up text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-yellow-600 to-amber-700 ${getTextClass()}`}>
-                                    {t.title}
-                                </h1>
+                                <div className="scale-in py-1 my-1" style={{ overflow: 'visible', minHeight: 'auto' }}>
+                                    <h1 className={`main-title text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-yellow-600 to-amber-700 pulse-animation ${getTextClass()}`} style={{ display: 'block', visibility: 'visible', opacity: 1, overflow: 'visible', lineHeight: '1.3', padding: '0.5rem 0.25rem', margin: '0', minHeight: 'auto', maxHeight: 'none' }}>
+                                        {t.title}
+                                    </h1>
+                                </div>
                                 
                                 {/* Decorative Line */}
-                                <div className="fade-in-up delay-100 flex items-center justify-center gap-4 my-8">
-                                    <div className="h-px bg-gradient-to-r from-transparent via-amber-400 to-amber-600 flex-1 max-w-20"></div>
-                                    <div className="w-3 h-3 rounded-full bg-amber-600"></div>
-                                    <div className="h-px bg-gradient-to-r from-amber-600 via-amber-400 to-transparent flex-1 max-w-20"></div>
+                                <div className="slide-in-left delay-100 flex items-center justify-center gap-3 my-2" style={{ overflow: 'visible' }}>
+                                    <div className="h-px bg-gradient-to-r from-transparent via-amber-400 to-amber-600 flex-1 max-w-16"></div>
+                                    <div className="w-2 h-2 rounded-full bg-amber-600 float-animation"></div>
+                                    <div className="h-px bg-gradient-to-r from-amber-600 via-amber-400 to-transparent flex-1 max-w-16"></div>
                                 </div>
                                 
                                 {/* Greeting */}
-                                <p className={`fade-in-up delay-200 text-lg md:text-xl text-gray-700 leading-relaxed ${getTextClass()}`}>
+                                <p className={`fade-in-up delay-200 text-sm md:text-base text-gray-700 leading-tight ${getTextClass()}`}>
                                     {t.greeting}
                                 </p>
                                 
                                 {/* Invitation Text */}
-                                <p className={`fade-in-up delay-200 text-xl md:text-2xl text-gray-800 leading-relaxed ${getTextClass()}`}>
+                                <p className={`slide-in-right delay-200 text-base md:text-lg text-gray-800 leading-tight ${getTextClass()}`}>
                                     {t.invite}
                                 </p>
                                 
-                                <p className={`fade-in-up delay-300 text-2xl md:text-3xl font-semibold text-emerald-700 ${getTextClass()}`}>
+                                <p className={`rotate-in delay-300 text-xl md:text-2xl font-semibold text-emerald-700 ${getTextClass()}`}>
                                     {t.ceremony}
                                 </p>
                                 
                                 {/* Of */}
-                                <p className={`fade-in-up delay-300 text-lg md:text-xl text-gray-700 ${getTextClass()}`}>
+                                <p className={`fade-in-up delay-300 text-sm md:text-base text-gray-700 ${getTextClass()}`}>
                                     {t.of}
                                 </p>
                                 
                                 {/* Groom Name */}
-                                <h2 className={`groom-name fade-in-up delay-300 text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-yellow-600 to-amber-700 ${getTextClass()}`} style={{ display: 'block', visibility: 'visible', opacity: 1 }}>
-                                    {t.groom}
-                                </h2>
+                                <div className="scale-in delay-300 py-1 my-1" style={{ overflow: 'visible', minHeight: 'auto' }}>
+                                    <h2 className={`groom-name text-3xl md:text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-yellow-600 to-amber-700 float-animation ${getTextClass()}`} style={{ display: 'block', visibility: 'visible', opacity: 1, overflow: 'visible', lineHeight: '1.3', padding: '0.5rem 0.25rem', margin: '0', minHeight: 'auto', maxHeight: 'none' }}>
+                                        {t.groom}
+                                    </h2>
+                                </div>
                                 
                                 {/* Decorative Line */}
-                                <div className="fade-in-up delay-400 flex items-center justify-center gap-4 my-8">
-                                    <div className="h-px bg-gradient-to-r from-transparent via-emerald-400 to-emerald-600 flex-1 max-w-20"></div>
-                                    <div className="w-3 h-3 rounded-full bg-emerald-600"></div>
-                                    <div className="h-px bg-gradient-to-r from-emerald-600 via-emerald-400 to-transparent flex-1 max-w-20"></div>
+                                <div className="slide-in-right delay-400 flex items-center justify-center gap-3 my-2">
+                                    <div className="h-px bg-gradient-to-r from-transparent via-emerald-400 to-emerald-600 flex-1 max-w-16"></div>
+                                    <div className="w-2 h-2 rounded-full bg-emerald-600 pulse-animation"></div>
+                                    <div className="h-px bg-gradient-to-r from-emerald-600 via-emerald-400 to-transparent flex-1 max-w-16"></div>
                                 </div>
                                 
                                 {/* Event Details */}
-                                <div className={`fade-in-up delay-400 space-y-4 text-gray-800 ${getTextClass()}`}>
-                                    <div className="text-2xl md:text-3xl font-semibold text-amber-800">
+                                <div className={`fade-in-up delay-400 space-y-1 text-gray-800 ${getTextClass()}`}>
+                                    <div className="text-lg md:text-xl font-semibold text-amber-800 scale-in delay-500">
                                         {t.date}
                                     </div>
                                     
-                                    <div className="text-xl md:text-2xl text-gray-700">
+                                    <div className="text-base md:text-lg text-gray-700 slide-in-left delay-500">
                                         <span className="font-semibold text-emerald-700">{t.timeLabel}</span> {t.time}
                                     </div>
                                     
-                                    <div className="text-xl md:text-2xl text-gray-700">
+                                    <div className="text-base md:text-lg text-gray-700 slide-in-right delay-500">
                                         <span className="font-semibold text-emerald-700">{t.venueLabel}</span> <span className="font-semibold text-amber-800">{t.venue}</span>
                                     </div>
                                 </div>
                                 
-                                {/* Action Buttons */}
-                                <div className="fade-in-up delay-400 pt-6 flex flex-col sm:flex-row gap-4 justify-center items-center">
+                                {/* Action Button */}
+                                <div className="fade-in-up delay-500 pt-3 flex justify-center items-center">
                                     <button
                                         onClick={handleViewMap}
-                                        className="map-btn text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg flex items-center gap-2"
+                                        className="map-btn text-white px-6 py-2 rounded-full text-sm md:text-base font-semibold shadow-lg flex items-center gap-2 pulse-animation hover:scale-110 transition-transform"
                                     >
-                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                         </svg>
                                         {t.viewMap}
-                                    </button>
-                                    <button
-                                        onClick={handleShare}
-                                        className="share-btn text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg flex items-center gap-2"
-                                    >
-                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-                                        </svg>
-                                        {t.share}
                                     </button>
                                 </div>
                             </div>
