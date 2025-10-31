@@ -3,9 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Walima Invitation</title>
+    <title>Walima Invitation - Husnain Sardar</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Noto+Naskh+Arabic:wght@400;600;700&family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- React -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@300;400;600&family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Noto+Naskh+Arabic:wght@400;600;700&family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap');
         
         * {
             margin: 0;
@@ -14,542 +28,383 @@
         }
         
         body {
-            font-family: 'Cormorant Garamond', serif;
-            background: linear-gradient(135deg, #1a0033 0%, #4a0e4e 25%, #81398f 50%, #4a0e4e 75%, #1a0033 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
         }
         
-        body::before {
+        .arabic-text {
+            font-family: 'Noto Naskh Arabic', serif;
+            direction: rtl;
+            unicode-bidi: bidi-override;
+        }
+        
+        .urdu-text {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            direction: rtl;
+            unicode-bidi: bidi-override;
+        }
+        
+        .english-text {
+            font-family: 'Playfair Display', serif;
+            direction: ltr;
+        }
+        
+        /* Islamic Pattern Background */
+        .pattern-bg {
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(184, 134, 11, 0.05) 35px, rgba(184, 134, 11, 0.05) 70px),
+                repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(184, 134, 11, 0.05) 35px, rgba(184, 134, 11, 0.05) 70px);
+        }
+        
+        /* Elegant Card Shadow */
+        .card-shadow {
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 40px rgba(184, 134, 11, 0.1);
+        }
+        
+        /* Gold Border Animation */
+        @keyframes goldGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(184, 134, 11, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(184, 134, 11, 0.5), 0 0 40px rgba(184, 134, 11, 0.3); }
+        }
+        
+        .gold-border {
+            animation: goldGlow 3s ease-in-out infinite;
+            border: 3px solid #d4af37;
+        }
+        
+        /* Fade In Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .delay-100 { animation-delay: 0.1s; opacity: 0; }
+        .delay-200 { animation-delay: 0.2s; opacity: 0; }
+        .delay-300 { animation-delay: 0.3s; opacity: 0; }
+        .delay-400 { animation-delay: 0.4s; opacity: 0; }
+        
+        /* Decorative Element */
+        .ornament {
+            width: 60px;
+            height: 60px;
+            border: 2px solid #d4af37;
+            position: relative;
+            transform: rotate(45deg);
+        }
+        
+        .ornament::before,
+        .ornament::after {
             content: '';
             position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(218, 165, 32, 0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: sparkle 20s linear infinite;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #d4af37;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
         
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        @keyframes sparkle {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .invitation-card {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f4ff 100%);
-            max-width: 650px;
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 30px 60px rgba(138, 43, 226, 0.5), 0 0 100px rgba(218, 165, 32, 0.3);
-            overflow: hidden;
-            position: relative;
-            animation: cardGlow 3s ease-in-out infinite;
-            border: 3px solid rgba(218, 165, 32, 0.6);
-        }
-        
-        @keyframes cardGlow {
-            0%, 100% { box-shadow: 0 30px 60px rgba(138, 43, 226, 0.5), 0 0 100px rgba(218, 165, 32, 0.3); }
-            50% { box-shadow: 0 30px 60px rgba(138, 43, 226, 0.7), 0 0 120px rgba(218, 165, 32, 0.5); }
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #4a148c 0%, #7b1fa2 25%, #9c27b0 50%, #7b1fa2 75%, #4a148c 100%);
-            background-size: 200% 200%;
-            animation: royalGradient 8s ease infinite;
-            padding: 50px 30px 40px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 4px solid #daa520;
-        }
-        
-        @keyframes royalGradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .header::before {
-            content: '👑';
-            position: absolute;
-            font-size: 100px;
-            opacity: 0.15;
-            top: -20px;
-            left: -20px;
-            animation: float 6s ease-in-out infinite, rotate 10s linear infinite;
-        }
-        
-        .header::after {
-            content: '👑';
-            position: absolute;
-            font-size: 100px;
-            opacity: 0.15;
-            bottom: -20px;
-            right: -20px;
-            animation: float 6s ease-in-out infinite reverse, rotate 10s linear infinite reverse;
-        }
-        
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        .bismillah {
-            color: #daa520;
-            font-family: 'Amiri', serif;
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 20px rgba(218, 165, 32, 0.5);
-            direction: rtl;
-            animation: shimmer 2s ease-in-out infinite;
-        }
-        
-        @keyframes shimmer {
-            0%, 100% { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 20px rgba(218, 165, 32, 0.5); }
-            50% { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 30px rgba(218, 165, 32, 0.8); }
-        }
-        
-        .invitation-title {
-            color: white;
-            font-family: 'Playfair Display', serif;
-            font-size: 42px;
-            font-weight: 700;
-            margin-bottom: 5px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        .invitation-title-urdu {
-            color: white;
-            font-family: 'Noto Nastaliq Urdu', serif;
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 5px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-            direction: rtl;
-        }
-        
-        .invitation-title-arabic {
-            color: white;
-            font-family: 'Amiri', serif;
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-            direction: rtl;
-        }
-        
-        .ornament {
-            color: #daa520;
-            font-size: 30px;
-            margin: 15px 0;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        .content {
-            padding: 50px 40px;
-            text-align: center;
-        }
-        
-        .you-are-invited {
-            font-size: 20px;
-            color: #666;
-            margin-bottom: 10px;
-            font-weight: 300;
-        }
-        
-        .you-are-invited-urdu {
-            font-family: 'Noto Nastaliq Urdu', serif;
-            font-size: 22px;
-            color: #666;
-            margin-bottom: 10px;
-            direction: rtl;
-        }
-        
-        .you-are-invited-arabic {
-            font-family: 'Amiri', serif;
-            font-size: 20px;
-            color: #666;
-            margin-bottom: 30px;
-            direction: rtl;
-        }
-        
-        .groom-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 48px;
-            background: linear-gradient(135deg, #4a148c 0%, #7b1fa2 50%, #daa520 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 700;
-            margin: 20px 0;
-            line-height: 1.2;
-            animation: textShine 3s ease-in-out infinite;
-        }
-        
-        @keyframes textShine {
-            0%, 100% { filter: brightness(1); }
-            50% { filter: brightness(1.3); }
-        }
-        
-        .groom-name-urdu {
-            font-family: 'Noto Nastaliq Urdu', serif;
-            font-size: 42px;
-            background: linear-gradient(135deg, #4a148c 0%, #7b1fa2 50%, #daa520 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 700;
-            margin: 15px 0;
-            direction: rtl;
-            animation: textShine 3s ease-in-out infinite;
-        }
-        
-        .label {
-            font-size: 16px;
-            color: #999;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-        
-        .label-urdu {
-            font-family: 'Noto Nastaliq Urdu', serif;
-            font-size: 18px;
-            color: #999;
-            margin-bottom: 10px;
-            direction: rtl;
-        }
-        
-        .details {
-            margin: 40px 0;
-            padding: 30px;
-            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 50%, #ffd700 100%);
-            background-size: 200% 200%;
-            animation: detailsGradient 5s ease infinite;
-            border-radius: 15px;
-            border: 2px solid rgba(138, 43, 226, 0.3);
-            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2);
-        }
-        
-        @keyframes detailsGradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .detail-item {
-            margin: 25px 0;
-        }
-        
-        .detail-icon {
-            font-size: 30px;
-            margin-bottom: 10px;
-            animation: bounce 2s ease-in-out infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .detail-title {
-            font-size: 14px;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 3px;
-        }
-        
-        .detail-title-urdu {
-            font-family: 'Noto Nastaliq Urdu', serif;
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 3px;
-            direction: rtl;
-        }
-        
-        .detail-title-arabic {
-            font-family: 'Amiri', serif;
-            font-size: 15px;
-            color: #666;
-            margin-bottom: 5px;
-            direction: rtl;
-        }
-        
-        .detail-info {
-            font-size: 24px;
-            color: #333;
-            font-weight: 600;
-            margin-bottom: 3px;
-        }
-        
-        .detail-info-urdu {
-            font-family: 'Noto Nastaliq Urdu', serif;
-            font-size: 22px;
-            color: #333;
-            font-weight: 700;
-            direction: rtl;
-            margin-bottom: 3px;
-        }
-        
-        .detail-info-arabic {
-            font-family: 'Amiri', serif;
-            font-size: 20px;
-            color: #333;
-            font-weight: 700;
-            direction: rtl;
-        }
-        
-        .map-button {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 12px 30px;
-            background: linear-gradient(135deg, #4a148c 0%, #7b1fa2 50%, #daa520 100%);
-            background-size: 200% 200%;
-            animation: buttonGradient 3s ease infinite;
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.5);
-            border: 2px solid #daa520;
-        }
-        
-        @keyframes buttonGradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .map-button:hover {
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 6px 20px rgba(138, 43, 226, 0.7), 0 0 30px rgba(218, 165, 32, 0.5);
-        }
-        
-        .language-selector {
-            text-align: center;
-            padding: 20px;
-            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
-            border-bottom: 3px solid #daa520;
-        }
-        
-        .language-btn {
-            display: inline-block;
-            margin: 5px;
-            padding: 8px 20px;
-            background: white;
-            color: #4a148c;
-            border: 2px solid #7b1fa2;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
+        /* Language Toggle Button */
+        .lang-btn {
             transition: all 0.3s ease;
         }
         
-        .language-btn:hover {
-            background: linear-gradient(135deg, #7b1fa2 0%, #4a148c 100%);
-            color: white;
+        .lang-btn:hover {
             transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
         }
         
-        .language-btn.active {
-            background: linear-gradient(135deg, #4a148c 0%, #7b1fa2 100%);
-            color: #daa520;
-            border-color: #daa520;
-            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.5);
+        .lang-btn.active {
+            background: linear-gradient(135deg, #d4af37 0%, #b8940b 100%);
+            color: white;
         }
         
-        .lang-content {
-            display: none;
+        /* Share Button */
+        .share-btn {
+            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+            transition: all 0.3s ease;
         }
         
-        .lang-content.active {
-            display: block;
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(22, 163, 74, 0.3);
         }
         
-        .footer {
-            padding: 30px;
-            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
-            text-align: center;
-            border-top: 3px solid #daa520;
+        /* Map Button */
+        .map-btn {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            transition: all 0.3s ease;
         }
         
-        .footer-text {
-            font-size: 18px;
-            color: #666;
-            font-style: italic;
-            margin-bottom: 5px;
+        .map-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
         }
         
-        .footer-text-urdu {
-            font-family: 'Noto Nastaliq Urdu', serif;
-            font-size: 20px;
-            color: #666;
-            margin-bottom: 5px;
-            direction: rtl;
-        }
-        
-        .footer-text-arabic {
-            font-family: 'Amiri', serif;
-            font-size: 18px;
-            color: #666;
-            margin-bottom: 10px;
-            direction: rtl;
-        }
-        
-        .hearts {
-            font-size: 24px;
-            color: #daa520;
-            animation: heartPulse 1.5s ease-in-out infinite;
-        }
-        
-        @keyframes heartPulse {
-            0%, 100% { transform: scale(1); }
-            25% { transform: scale(1.2); }
-            50% { transform: scale(1); }
-            75% { transform: scale(1.1); }
-        }
-        
-        @media (max-width: 600px) {
-            .invitation-title {
-                font-size: 32px;
+        /* Responsive Text Sizes */
+        @media (max-width: 640px) {
+            .main-title {
+                font-size: 1.75rem;
             }
-            
-            .invitation-title-urdu {
-                font-size: 28px;
-            }
-            
             .groom-name {
-                font-size: 36px;
-            }
-            
-            .groom-name-urdu {
-                font-size: 32px;
-            }
-            
-            .content {
-                padding: 30px 20px;
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="invitation-card">
-        <div class="language-selector">
-            <button class="language-btn active" onclick="changeLanguage('en')">English</button>
-            <button class="language-btn" onclick="changeLanguage('ur')">اردو</button>
-            <button class="language-btn" onclick="changeLanguage('ar')">العربية</button>
-        </div>
-        
-        <div class="header">
-            <div class="bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
-            <div class="ornament">❁ ✦ ❁</div>
-            <h1 class="invitation-title lang-content lang-en active">Walima Ceremony</h1>
-            <h1 class="invitation-title-urdu lang-content lang-ur">ولیمہ کی تقریب</h1>
-            <h1 class="invitation-title-arabic lang-content lang-ar">حفل الوليمة</h1>
-            <div class="ornament">✦</div>
-        </div>
-        
-        <div class="content">
-            <p class="you-are-invited lang-content lang-en active">You are cordially invited to celebrate the</p>
-            <p class="you-are-invited-urdu lang-content lang-ur">آپ کو مدعو کیا جاتا ہے</p>
-            <p class="you-are-invited-arabic lang-content lang-ar">أنتم مدعوون لحضور</p>
-            
-            <p class="label lang-content lang-en active">Groom</p>
-            <p class="label-urdu lang-content lang-ur">دولہا</p>
-            <h2 class="groom-name lang-content lang-en active">Husnain Sardar</h2>
-            <h2 class="groom-name-urdu lang-content lang-ur">حسنین سردار</h2>
-            <h2 class="groom-name-urdu lang-content lang-ar">حسنین سردار</h2>
-            
-            <div class="details">
-                <div class="detail-item">
-                    <div class="detail-icon">📅</div>
-                    <div class="detail-title lang-content lang-en active">Date</div>
-                    <div class="detail-title-urdu lang-content lang-ur">تاریخ</div>
-                    <div class="detail-title-arabic lang-content lang-ar">التاريخ</div>
-                    <div class="detail-info lang-content lang-en active">17th November 2025</div>
-                    <div class="detail-info-urdu lang-content lang-ur">17 نومبر 2025</div>
-                    <div class="detail-info-arabic lang-content lang-ar">17 نوفمبر 2025</div>
-                </div>
-                
-                <div class="detail-item">
-                    <div class="detail-icon">🕐</div>
-                    <div class="detail-title lang-content lang-en active">Time</div>
-                    <div class="detail-title-urdu lang-content lang-ur">وقت</div>
-                    <div class="detail-title-arabic lang-content lang-ar">الوقت</div>
-                    <div class="detail-info lang-content lang-en active">2:00 PM</div>
-                    <div class="detail-info-urdu lang-content lang-ur">دوپہر 2 بجے</div>
-                    <div class="detail-info-arabic lang-content lang-ar">الساعة 2:00 مساءً</div>
-                </div>
-                
-                <div class="detail-item">
-                    <div class="detail-icon">📍</div>
-                    <div class="detail-title lang-content lang-en active">Venue</div>
-                    <div class="detail-title-urdu lang-content lang-ur">مقام</div>
-                    <div class="detail-title-arabic lang-content lang-ar">المكان</div>
-                    <div class="detail-info lang-content lang-en active">At Home</div>
-                    <div class="detail-info-urdu lang-content lang-ur">گھر پر</div>
-                    <div class="detail-info-arabic lang-content lang-ar">في المنزل</div>
-                    <a href="https://maps.app.goo.gl/wYrBvmJjShs6BVnB6?g_st=ac" target="_blank" class="map-button">
-                        <span class="lang-content lang-en active">View Map 🗺️</span>
-                        <span class="lang-content lang-ur" style="font-family: 'Noto Nastaliq Urdu', serif;">نقشہ دیکھیں 🗺️</span>
-                        <span class="lang-content lang-ar" style="font-family: 'Amiri', serif;">عرض الخريطة 🗺️</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="footer">
-            <p class="footer-text lang-content lang-en active">Your presence will make our celebration complete</p>
-            <p class="footer-text-urdu lang-content lang-ur">آپ کی موجودگی سے ہماری خوشی مکمل ہوگی</p>
-            <p class="footer-text-arabic lang-content lang-ar">حضوركم يشرفنا ويكمل فرحتنا</p>
-            <div class="hearts">♥ ♥ ♥</div>
-        </div>
-    </div>
+    <div id="root"></div>
     
-    <script>
-        function changeLanguage(lang) {
-            // Remove active class from all buttons
-            document.querySelectorAll('.language-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        
+        // Translations
+        const translations = {
+            en: {
+                title: "Walima Invitation",
+                greeting: "With the grace of Almighty Allah,",
+                invite: "We cordially invite you to the",
+                ceremony: "Walima ceremony",
+                of: "of",
+                groom: "Husnain Sardar",
+                date: "17th November 2025",
+                time: "2:00 PM",
+                venue: "At Home",
+                venueLabel: "Venue:",
+                timeLabel: "Time:",
+                share: "Share Invitation",
+                shareMessage: "You're invited to the Walima ceremony of Husnain Sardar on 17th November 2025 at 2:00 PM. Venue: At Home",
+                viewMap: "View on Map"
+            },
+            urdu: {
+                title: "ولیمہ دعوت",
+                greeting: "اللہ تعالیٰ کے فضل و کرم سے،",
+                invite: "ہم آپ کو بصد احترام دعوت دیتے ہیں",
+                ceremony: "ولیمہ کی تقریب",
+                of: "کے",
+                groom: "حسنین سردار",
+                date: "17 نومبر 2025",
+                time: "بعد دوپہر 2 بجے",
+                venue: "گھر پر",
+                venueLabel: "مقام:",
+                timeLabel: "وقت:",
+                share: "دعوت نامہ شیئر کریں",
+                shareMessage: "آپ کو حسنین سردار کے ولیمہ کی تقریب میں 17 نومبر 2025 کو دوپہر 2 بجے مدعو کیا جاتا ہے۔ مقام: گھر پر",
+                viewMap: "نقشے پر دیکھیں"
+            },
+            ar: {
+                title: "دعوة الوليمة",
+                greeting: "بفضل الله تعالى،",
+                invite: "يسرنا أن ندعوكم بحرارة لحضور",
+                ceremony: "حفل الوليمة",
+                of: "لـ",
+                groom: "حسنین سردار",
+                date: "17 نوفمبر 2025",
+                time: "الساعة 2:00 بعد الظهر",
+                venue: "في المنزل",
+                venueLabel: "المكان:",
+                timeLabel: "الوقت:",
+                share: "مشاركة الدعوة",
+                shareMessage: "أنت مدعو لحفل الوليمة لحسنین سردار في 17 نوفمبر 2025 الساعة 2:00 بعد الظهر. المكان: في المنزل",
+                viewMap: "عرض على الخريطة"
+            }
+        };
+        
+        function App() {
+            const [language, setLanguage] = useState('en');
+            const [animationKey, setAnimationKey] = useState(0);
+            const t = translations[language];
             
-            // Add active class to clicked button
-            event.target.classList.add('active');
+            // Force animation restart on language change
+            useEffect(() => {
+                setAnimationKey(prev => prev + 1);
+            }, [language]);
             
-            // Hide all language content
-            document.querySelectorAll('.lang-content').forEach(content => {
-                content.classList.remove('active');
-            });
+            // Set font direction based on language
+            const getTextClass = () => {
+                if (language === 'ar') return 'arabic-text';
+                if (language === 'urdu') return 'urdu-text';
+                return 'english-text';
+            };
             
-            // Show selected language content
-            document.querySelectorAll('.lang-' + lang).forEach(content => {
-                content.classList.add('active');
-            });
+            // Share functionality
+            const handleShare = async () => {
+                const shareData = {
+                    title: t.title,
+                    text: t.shareMessage,
+                    url: window.location.href
+                };
+                
+                try {
+                    if (navigator.share) {
+                        await navigator.share(shareData);
+                    } else {
+                        // Fallback: Copy to clipboard
+                        await navigator.clipboard.writeText(t.shareMessage + ' ' + window.location.href);
+                        alert('Invitation copied to clipboard!');
+                    }
+                } catch (err) {
+                    console.log('Error sharing:', err);
+                }
+            };
+            
+            // Open Google Maps
+            const handleViewMap = () => {
+                window.open('https://maps.app.goo.gl/wYrBvmJjShs6BVnB6?g_st=ac', '_blank');
+            };
+            
+            return (
+                <div className="min-h-screen pattern-bg py-8 px-4">
+                    {/* Language Toggle */}
+                    <div className="flex justify-end mb-4 max-w-4xl mx-auto">
+                        <div className="flex gap-2 bg-white rounded-full p-1 shadow-lg">
+                            <button
+                                onClick={() => setLanguage('en')}
+                                className={`lang-btn px-4 py-2 rounded-full text-sm font-semibold transition-all ${
+                                    language === 'en' ? 'active text-white' : 'text-gray-700 hover:bg-gray-100'
+                                }`}
+                            >
+                                🇬🇧 English
+                            </button>
+                            <button
+                                onClick={() => setLanguage('urdu')}
+                                className={`lang-btn px-4 py-2 rounded-full text-sm font-semibold transition-all ${
+                                    language === 'urdu' ? 'active text-white' : 'text-gray-700 hover:bg-gray-100'
+                                }`}
+                            >
+                                🇵🇰 اردو
+                            </button>
+                            <button
+                                onClick={() => setLanguage('ar')}
+                                className={`lang-btn px-4 py-2 rounded-full text-sm font-semibold transition-all ${
+                                    language === 'ar' ? 'active text-white' : 'text-gray-700 hover:bg-gray-100'
+                                }`}
+                            >
+                                🇸🇦 العربية
+                            </button>
+                        </div>
+                    </div>
+                    
+                    {/* Main Invitation Card */}
+                    <div className="max-w-4xl mx-auto">
+                        <div className={`bg-gradient-to-br from-white via-amber-50 to-yellow-50 gold-border rounded-3xl card-shadow p-8 md:p-12 relative overflow-hidden ${getTextClass()}`}>
+                            {/* Decorative Corner Elements */}
+                            <div className="absolute top-4 left-4 opacity-20">
+                                <div className="ornament"></div>
+                            </div>
+                            <div className="absolute top-4 right-4 opacity-20">
+                                <div className="ornament"></div>
+                            </div>
+                            <div className="absolute bottom-4 left-4 opacity-20">
+                                <div className="ornament"></div>
+                            </div>
+                            <div className="absolute bottom-4 right-4 opacity-20">
+                                <div className="ornament"></div>
+                            </div>
+                            
+                            {/* Content */}
+                            <div key={animationKey} className="relative z-10 text-center space-y-6">
+                                {/* Title */}
+                                <h1 className={`main-title fade-in-up text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-yellow-600 to-amber-700 ${getTextClass()}`}>
+                                    {t.title}
+                                </h1>
+                                
+                                {/* Decorative Line */}
+                                <div className="fade-in-up delay-100 flex items-center justify-center gap-4 my-8">
+                                    <div className="h-px bg-gradient-to-r from-transparent via-amber-400 to-amber-600 flex-1 max-w-20"></div>
+                                    <div className="w-3 h-3 rounded-full bg-amber-600"></div>
+                                    <div className="h-px bg-gradient-to-r from-amber-600 via-amber-400 to-transparent flex-1 max-w-20"></div>
+                                </div>
+                                
+                                {/* Greeting */}
+                                <p className={`fade-in-up delay-200 text-lg md:text-xl text-gray-700 leading-relaxed ${getTextClass()}`}>
+                                    {t.greeting}
+                                </p>
+                                
+                                {/* Invitation Text */}
+                                <p className={`fade-in-up delay-200 text-xl md:text-2xl text-gray-800 leading-relaxed ${getTextClass()}`}>
+                                    {t.invite}
+                                </p>
+                                
+                                <p className={`fade-in-up delay-300 text-2xl md:text-3xl font-semibold text-emerald-700 ${getTextClass()}`}>
+                                    {t.ceremony}
+                                </p>
+                                
+                                {/* Of */}
+                                <p className={`fade-in-up delay-300 text-lg md:text-xl text-gray-700 ${getTextClass()}`}>
+                                    {t.of}
+                                </p>
+                                
+                                {/* Groom Name */}
+                                <h2 className={`groom-name fade-in-up delay-300 text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-yellow-600 to-amber-700 ${getTextClass()}`} style={{ display: 'block', visibility: 'visible', opacity: 1 }}>
+                                    {t.groom}
+                                </h2>
+                                
+                                {/* Decorative Line */}
+                                <div className="fade-in-up delay-400 flex items-center justify-center gap-4 my-8">
+                                    <div className="h-px bg-gradient-to-r from-transparent via-emerald-400 to-emerald-600 flex-1 max-w-20"></div>
+                                    <div className="w-3 h-3 rounded-full bg-emerald-600"></div>
+                                    <div className="h-px bg-gradient-to-r from-emerald-600 via-emerald-400 to-transparent flex-1 max-w-20"></div>
+                                </div>
+                                
+                                {/* Event Details */}
+                                <div className={`fade-in-up delay-400 space-y-4 text-gray-800 ${getTextClass()}`}>
+                                    <div className="text-2xl md:text-3xl font-semibold text-amber-800">
+                                        {t.date}
+                                    </div>
+                                    
+                                    <div className="text-xl md:text-2xl text-gray-700">
+                                        <span className="font-semibold text-emerald-700">{t.timeLabel}</span> {t.time}
+                                    </div>
+                                    
+                                    <div className="text-xl md:text-2xl text-gray-700">
+                                        <span className="font-semibold text-emerald-700">{t.venueLabel}</span> <span className="font-semibold text-amber-800">{t.venue}</span>
+                                    </div>
+                                </div>
+                                
+                                {/* Action Buttons */}
+                                <div className="fade-in-up delay-400 pt-6 flex flex-col sm:flex-row gap-4 justify-center items-center">
+                                    <button
+                                        onClick={handleViewMap}
+                                        className="map-btn text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg flex items-center gap-2"
+                                    >
+                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        </svg>
+                                        {t.viewMap}
+                                    </button>
+                                    <button
+                                        onClick={handleShare}
+                                        className="share-btn text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg flex items-center gap-2"
+                                    >
+                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                                        </svg>
+                                        {t.share}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
         }
+        
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
     </script>
 </body>
 </html>
