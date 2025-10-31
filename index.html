@@ -30,10 +30,9 @@
         body {
             font-family: 'Playfair Display', serif;
             background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
-            height: 100vh;
-            overflow: hidden;
-            position: fixed;
-            width: 100%;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape */
         }
         
         .arabic-text {
@@ -43,12 +42,6 @@
         }
         
         .urdu-text {
-            font-family: 'Noto Nastaliq Urdu', serif;
-            direction: rtl;
-            unicode-bidi: bidi-override;
-        }
-        
-        .punjabi-text {
             font-family: 'Noto Nastaliq Urdu', serif;
             direction: rtl;
             unicode-bidi: bidi-override;
@@ -82,86 +75,15 @@
             border: 3px solid #d4af37;
         }
         
-        /* Enhanced Animations */
+        /* Fade In Animation */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px) scale(0.9);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-        
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-        
-        @keyframes rotateIn {
-            from {
-                opacity: 0;
-                transform: rotate(-10deg) scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: rotate(0deg) scale(1);
-            }
-        }
-        
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-        }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-        
-        @keyframes shimmer {
-            0% {
-                background-position: -1000px 0;
-            }
-            100% {
-                background-position: 1000px 0;
+                transform: translateY(0);
             }
         }
         
@@ -169,44 +91,18 @@
             animation: fadeInUp 0.8s ease-out forwards;
         }
         
-        .slide-in-left {
-            animation: slideInLeft 0.8s ease-out forwards;
-        }
-        
-        .slide-in-right {
-            animation: slideInRight 0.8s ease-out forwards;
-        }
-        
-        .scale-in {
-            animation: scaleIn 0.8s ease-out forwards;
-        }
-        
-        .rotate-in {
-            animation: rotateIn 0.8s ease-out forwards;
-        }
-        
-        .pulse-animation {
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        .float-animation {
-            animation: float 3s ease-in-out infinite;
-        }
-        
         .delay-100 { animation-delay: 0.1s; opacity: 0; }
         .delay-200 { animation-delay: 0.2s; opacity: 0; }
         .delay-300 { animation-delay: 0.3s; opacity: 0; }
         .delay-400 { animation-delay: 0.4s; opacity: 0; }
-        .delay-500 { animation-delay: 0.5s; opacity: 0; }
         
-        /* Decorative Element with Animation */
+        /* Decorative Element */
         .ornament {
             width: 60px;
             height: 60px;
             border: 2px solid #d4af37;
             position: relative;
             transform: rotate(45deg);
-            animation: pulse 3s ease-in-out infinite;
         }
         
         .ornament::before,
@@ -220,12 +116,12 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            animation: float 4s ease-in-out infinite;
         }
         
         /* Language Toggle Button */
         .lang-btn {
             transition: all 0.3s ease;
+            min-width: 0; /* Prevent flex items from overflowing */
         }
         
         .lang-btn:hover {
@@ -259,258 +155,119 @@
             box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
         }
         
-        /* Groom Name Visibility Fix */
-        .groom-name {
-            line-height: 1.4 !important;
-            padding: 1rem 0.5rem !important;
-            margin: 1rem 0 !important;
-            overflow: visible !important;
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            min-height: auto !important;
-            max-height: none !important;
-            text-align: center !important;
-        }
-        
-        .urdu-text .groom-name,
-        .arabic-text .groom-name,
-        .punjabi-text .groom-name {
-            white-space: normal !important;
-            word-wrap: break-word !important;
-            overflow-wrap: break-word !important;
-            text-align: center !important;
-            display: block !important;
-            line-height: 1.5 !important;
-        }
-        
-        /* Bismillah Styling */
-        .bismillah {
-            font-family: 'Noto Naskh Arabic', serif;
-            direction: rtl;
-            font-size: 1.5rem;
-            color: #d4af37;
-            font-weight: 600;
-            text-align: center;
-            letter-spacing: 3px;
-            line-height: 1.8;
-            padding: 0.5rem 0;
-            margin: 0.25rem 0;
-            text-shadow: 0 2px 4px rgba(212, 175, 55, 0.3);
-            animation: fadeInUp 1s ease-out forwards;
-        }
-        
-        @media (max-width: 640px) {
-            .bismillah {
-                font-size: 1.1rem;
-                letter-spacing: 2px;
-            }
-        }
-        
-        /* Countdown Timer Styles */
-        .countdown-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            padding: 1rem;
-            margin: 1rem 0;
-        }
-        
-        .countdown-item {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
-            border: 2px solid rgba(212, 175, 55, 0.3);
-            border-radius: 12px;
-            padding: 0.75rem 1rem;
-            min-width: 60px;
-            text-align: center;
-        }
-        
-        .countdown-number {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #d4af37;
-            line-height: 1.2;
-        }
-        
-        .countdown-label {
-            font-size: 0.75rem;
-            color: #666;
-            margin-top: 0.25rem;
-        }
-        
-        /* Waiting Icon Animation */
-        @keyframes spin {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-        
-        @keyframes pulse-ring {
-            0% {
-                transform: scale(0.8);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(2.4);
-                opacity: 0;
-            }
-        }
-        
-        .waiting-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            width: 40px;
-            height: 40px;
-            margin: 0 0.5rem;
-        }
-        
-        .waiting-icon svg {
-            animation: spin 2s linear infinite;
-            filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.4));
-        }
-        
-        .waiting-icon::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border: 2px solid #d4af37;
-            border-radius: 50%;
-            animation: pulse-ring 2s ease-out infinite;
-        }
-        
-        @media (max-width: 640px) {
-            .countdown-item {
-                padding: 0.5rem 0.75rem;
-                min-width: 50px;
-            }
-            .countdown-number {
-                font-size: 1.25rem;
-            }
-            .countdown-label {
-                font-size: 0.65rem;
-            }
-            .waiting-icon {
-                width: 32px;
-                height: 32px;
-            }
-        }
-        
-        /* Ensure content wrapper doesn't clip */
-        .relative.z-10 {
-            overflow: visible !important;
-        }
-        
-        /* Main Title Visibility Fix */
-        .main-title {
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            overflow: visible !important;
-            line-height: 1.4 !important;
-            padding: 1rem 0.5rem !important;
-            margin: 0.5rem 0 !important;
-            min-height: auto !important;
-            max-height: none !important;
-            text-align: center !important;
-        }
-        
-        .urdu-text .main-title,
-        .arabic-text .main-title,
-        .punjabi-text .main-title {
-            white-space: normal !important;
-            word-wrap: break-word !important;
-            overflow-wrap: break-word !important;
-            text-align: center !important;
-            display: block !important;
-            line-height: 1.5 !important;
-            padding: 1rem 0.5rem !important;
-        }
-        
-        /* Compact Layout for Single Page */
-        .compact-spacing {
-            margin: 0.25rem 0 !important;
-            padding: 0.25rem 0 !important;
-        }
-        
-        /* Mobile Optimizations for Full Screen Fit */
+        /* Responsive Text Sizes */
         @media (max-width: 640px) {
             .main-title {
-                font-size: 1.25rem;
-                line-height: 1.3 !important;
-                padding: 0.5rem 0.25rem !important;
-                margin: 0.25rem 0 !important;
+                font-size: 1.75rem !important;
             }
             .groom-name {
-                font-size: 1.6rem;
-                line-height: 1.3 !important;
-                padding: 0.5rem 0.25rem !important;
-                margin: 0.25rem 0 !important;
+                font-size: 2rem !important;
             }
-            .bismillah {
-                font-size: 1rem;
-                padding: 0.3rem 0 !important;
-                margin: 0.2rem 0 !important;
+            
+            /* Mobile-specific adjustments */
+            .mobile-padding {
+                padding: 1.5rem !important;
             }
-            .card-container {
-                padding: 1.25rem 1rem !important;
-                height: 80vh;
-                max-height: 80vh;
-                display: flex;
+            
+            .mobile-space-y {
+                gap: 1.5rem !important;
+            }
+            
+            .mobile-text-lg {
+                font-size: 1.125rem !important;
+            }
+            
+            .mobile-text-xl {
+                font-size: 1.25rem !important;
+            }
+            
+            .mobile-text-2xl {
+                font-size: 1.5rem !important;
+            }
+            
+            .mobile-text-3xl {
+                font-size: 1.875rem !important;
+            }
+            
+            .mobile-buttons {
                 flex-direction: column;
+                width: 100%;
+            }
+            
+            .mobile-button {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .lang-toggle {
+                flex-wrap: wrap;
                 justify-content: center;
-                overflow-y: auto;
+                gap: 0.25rem;
             }
-            .ornament {
-                width: 35px;
-                height: 35px;
+            
+            .lang-btn {
+                padding: 0.5rem 0.75rem !important;
+                font-size: 0.875rem !important;
             }
-            .ornament::before,
-            .ornament::after {
-                width: 10px;
-                height: 10px;
+        }
+        
+        /* Additional responsive breakpoints */
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 1.5rem !important;
             }
-            /* Optimize spacing for mobile */
-            .content-spacing {
-                padding: 0.5rem 0 !important;
+            
+            .groom-name {
+                font-size: 1.75rem !important;
             }
-            /* Increase text sizes for better use of space */
-            .text-xs {
-                font-size: 0.85rem !important;
+            
+            .mobile-padding {
+                padding: 1rem !important;
             }
-            .text-sm {
-                font-size: 0.9rem !important;
-            }
-            .text-base {
+            
+            .mobile-text-lg {
                 font-size: 1rem !important;
             }
-            .text-lg {
-                font-size: 1.1rem !important;
+            
+            .mobile-text-xl {
+                font-size: 1.125rem !important;
             }
-            .text-xl {
-                font-size: 1.2rem !important;
+            
+            .mobile-text-2xl {
+                font-size: 1.25rem !important;
             }
-            .text-2xl {
-                font-size: 1.4rem !important;
-            }
-            .text-3xl {
-                font-size: 1.6rem !important;
+            
+            .mobile-text-3xl {
+                font-size: 1.5rem !important;
             }
         }
         
-        @media (min-width: 641px) and (max-width: 1024px) {
-            .main-title {
-                font-size: 2rem;
-            }
-            .groom-name {
-                font-size: 2.5rem;
+        /* Ensure proper touch targets */
+        button, .lang-btn {
+            min-height: 44px; /* Minimum touch target size */
+        }
+        
+        /* Prevent text selection on interactive elements */
+        button {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+        
+        /* Improve scrolling performance */
+        .card-shadow {
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            perspective: 1000;
+        }
+        
+        /* Safe area insets for modern mobile devices */
+        @supports(padding: max(0px)) {
+            .safe-area-padding {
+                padding-left: max(1rem, env(safe-area-inset-left));
+                padding-right: max(1rem, env(safe-area-inset-right));
+                padding-bottom: max(1rem, env(safe-area-inset-bottom));
             }
         }
     </style>
@@ -526,124 +283,57 @@
             en: {
                 title: "Walima Invitation",
                 greeting: "With the grace of Almighty Allah,",
-                invite: "We cordially invite you to the Walima ceremony of",
-                ceremony: "",
-                of: "",
+                invite: "We cordially invite you to the",
+                ceremony: "Walima ceremony",
+                of: "of",
                 groom: "Husnain Sardar",
-                date: "on 17th November 2025",
+                date: "17th November 2025",
                 time: "2:00 PM",
                 venue: "At Home",
                 venueLabel: "Venue:",
                 timeLabel: "Time:",
-                closingMessage: "We would be deeply honored and grateful for your presence.",
                 share: "Share Invitation",
                 shareMessage: "You're invited to the Walima ceremony of Husnain Sardar on 17th November 2025 at 2:00 PM. Venue: At Home",
-                viewMap: "View on Map",
-                countdownTitle: "Time Remaining",
-                days: "Days",
-                hours: "Hours",
-                minutes: "Minutes",
-                seconds: "Seconds"
+                viewMap: "View on Map"
             },
             urdu: {
                 title: "ولیمہ دعوت",
-                greeting: "اللہ تعالیٰ کے فضل و کرم سے",
+                greeting: "اللہ تعالیٰ کے فضل و کرم سے،",
                 invite: "ہم آپ کو بصد احترام دعوت دیتے ہیں",
-                ceremony: "ولیمہ کی تقریب میں شرکت کے لیے",
-                of: "",
+                ceremony: "ولیمہ کی تقریب",
+                of: "کے",
                 groom: "حسنین سردار",
-                date: "بتاریخ 17 نومبر 2025",
-                time: "بوقت دوپہر 2 بجے",
-                venue: "بمقام گھر پر",
-                venueLabel: "",
-                timeLabel: "",
-                closingMessage: "آپ کی شرکت ہمارے لیے باعثِ مسرت اور شکریہ کا باعث ہوگی۔",
+                date: "17 نومبر 2025",
+                time: "بعد دوپہر 2 بجے",
+                venue: "گھر پر",
+                venueLabel: "مقام:",
+                timeLabel: "وقت:",
                 share: "دعوت نامہ شیئر کریں",
-                shareMessage: "آپ کو حسنین سردار کے ولیمہ کی تقریب میں شرکت کے لیے بتاریخ 17 نومبر 2025 بوقت دوپہر 2 بجے بمقام گھر پر دعوت دی جاتی ہے",
-                viewMap: "نقشے پر دیکھیں",
-                countdownTitle: "باقی وقت",
-                days: "دن",
-                hours: "گھنٹے",
-                minutes: "منٹ",
-                seconds: "سیکنڈ"
+                shareMessage: "آپ کو حسنین سردار کے ولیمہ کی تقریب میں 17 نومبر 2025 کو دوپہر 2 بجے مدعو کیا جاتا ہے۔ مقام: گھر پر",
+                viewMap: "نقشے پر دیکھیں"
             },
             ar: {
                 title: "دعوة الوليمة",
-                greeting: "بفضل الله ورحمته",
-                invite: "نتشرف بدعوتكم لحضور وليمة زفاف",
-                ceremony: "",
-                of: "",
+                greeting: "بفضل الله تعالى،",
+                invite: "يسرنا أن ندعوكم بحرارة لحضور",
+                ceremony: "حفل الوليمة",
+                of: "لـ",
                 groom: "حسنین سردار",
-                date: "بتاريخ 17 نوفمبر 2025",
-                time: "الساعة 2:00 ظهرًا",
+                date: "17 نوفمبر 2025",
+                time: "الساعة 2:00 بعد الظهر",
                 venue: "في المنزل",
                 venueLabel: "المكان:",
                 timeLabel: "الوقت:",
-                closingMessage: "حضوركم تشرفنا وتسعدنا، فشكرًا لتلبيتكم الدعوة.",
                 share: "مشاركة الدعوة",
                 shareMessage: "أنت مدعو لحفل الوليمة لحسنین سردار في 17 نوفمبر 2025 الساعة 2:00 بعد الظهر. المكان: في المنزل",
-                viewMap: "عرض على الخريطة",
-                countdownTitle: "الوقت المتبقي",
-                days: "أيام",
-                hours: "ساعات",
-                minutes: "دقائق",
-                seconds: "ثواني"
-            },
-            punjabi: {
-                title: "ولیما دعوت",
-                greeting: "اللہ تعالیٰ دے فضل تے کرم نال",
-                invite: "اسی تہانوں عزت نال دعوت دیندے آں",
-                ceremony: "ولیما دی تقریب وِچ شرکت لئی",
-                of: "",
-                groom: "حسنین سردار",
-                date: "مورخہ 17 نومبر 2025",
-                time: "وِلے دوپہر 2 بجے",
-                venue: "جائے گھر تے",
-                venueLabel: "",
-                timeLabel: "",
-                closingMessage: "تُہاڈی شرکت ساڈے لئی خوشی تے شکرگزاری دا باعث بنوے گی۔",
-                share: "دعوت نامہ شیئر کرو",
-                shareMessage: "تہانوں حسنین سردار دی ولیما دی تقریب وِچ شرکت لئی مورخہ 17 نومبر 2025 وِلے دوپہر 2 بجے جائے گھر تے دعوت دتی جاندی اے",
-                viewMap: "نقشے تے ویکھو",
-                countdownTitle: "باقی وقت",
-                days: "دن",
-                hours: "گھنٹے",
-                minutes: "منٹ",
-                seconds: "سیکنڈ"
+                viewMap: "عرض على الخريطة"
             }
         };
         
         function App() {
             const [language, setLanguage] = useState('en');
             const [animationKey, setAnimationKey] = useState(0);
-            const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
             const t = translations[language];
-            
-            // Countdown timer calculation
-            useEffect(() => {
-                const eventDate = new Date('2025-11-17T14:00:00').getTime();
-                
-                const updateCountdown = () => {
-                    const now = new Date().getTime();
-                    const distance = eventDate - now;
-                    
-                    if (distance > 0) {
-                        setCountdown({
-                            days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-                            hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-                            minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-                            seconds: Math.floor((distance % (1000 * 60)) / 1000)
-                        });
-                    } else {
-                        setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-                    }
-                };
-                
-                updateCountdown();
-                const interval = setInterval(updateCountdown, 1000);
-                
-                return () => clearInterval(interval);
-            }, []);
             
             // Force animation restart on language change
             useEffect(() => {
@@ -654,7 +344,6 @@
             const getTextClass = () => {
                 if (language === 'ar') return 'arabic-text';
                 if (language === 'urdu') return 'urdu-text';
-                if (language === 'punjabi') return 'punjabi-text';
                 return 'english-text';
             };
             
@@ -685,21 +374,21 @@
             };
             
             return (
-                <div className="h-screen pattern-bg pt-0.5 pb-1 md:py-2 px-2 md:px-4 overflow-hidden flex flex-col">
+                <div className="min-h-screen pattern-bg py-4 md:py-8 px-4 safe-area-padding">
                     {/* Language Toggle */}
-                    <div className="flex justify-end mb-1 md:mb-2 max-w-4xl mx-auto w-full">
-                        <div className="flex flex-wrap gap-1 bg-white rounded-full p-1 shadow-lg scale-in">
+                    <div className="flex justify-center md:justify-end mb-4 max-w-4xl mx-auto">
+                        <div className="flex gap-1 md:gap-2 bg-white rounded-full p-1 shadow-lg lang-toggle">
                             <button
                                 onClick={() => setLanguage('en')}
-                                className={`lang-btn px-2 py-1 rounded-full text-xs font-semibold transition-all ${
+                                className={`lang-btn px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-semibold transition-all ${
                                     language === 'en' ? 'active text-white' : 'text-gray-700 hover:bg-gray-100'
                                 }`}
                             >
-                                🇬🇧 EN
+                                🇬🇧 English
                             </button>
                             <button
                                 onClick={() => setLanguage('urdu')}
-                                className={`lang-btn px-2 py-1 rounded-full text-xs font-semibold transition-all ${
+                                className={`lang-btn px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-semibold transition-all ${
                                     language === 'urdu' ? 'active text-white' : 'text-gray-700 hover:bg-gray-100'
                                 }`}
                             >
@@ -707,178 +396,112 @@
                             </button>
                             <button
                                 onClick={() => setLanguage('ar')}
-                                className={`lang-btn px-2 py-1 rounded-full text-xs font-semibold transition-all ${
+                                className={`lang-btn px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-semibold transition-all ${
                                     language === 'ar' ? 'active text-white' : 'text-gray-700 hover:bg-gray-100'
                                 }`}
                             >
                                 🇸🇦 العربية
                             </button>
-                            <button
-                                onClick={() => setLanguage('punjabi')}
-                                className={`lang-btn px-2 py-1 rounded-full text-xs font-semibold transition-all ${
-                                    language === 'punjabi' ? 'active text-white' : 'text-gray-700 hover:bg-gray-100'
-                                }`}
-                            >
-                                🇵🇰 پنجابی
-                            </button>
                         </div>
                     </div>
                     
                     {/* Main Invitation Card */}
-                    <div className="max-w-4xl mx-auto flex-1 flex items-center justify-center w-full py-2 md:py-2">
-                        <div className={`bg-gradient-to-br from-white via-amber-50 to-yellow-50 gold-border rounded-2xl md:rounded-3xl card-shadow p-2 md:p-8 relative overflow-hidden w-full card-container ${getTextClass()}`}>
+                    <div className="max-w-4xl mx-auto">
+                        <div className={`bg-gradient-to-br from-white via-amber-50 to-yellow-50 gold-border rounded-3xl card-shadow p-6 md:p-12 mobile-padding relative overflow-hidden ${getTextClass()}`}>
                             {/* Decorative Corner Elements */}
-                            <div className="absolute top-4 left-4 opacity-20">
-                                <div className="ornament"></div>
+                            <div className="absolute top-2 left-2 md:top-4 md:left-4 opacity-20">
+                                <div className="ornament scale-75 md:scale-100"></div>
                             </div>
-                            <div className="absolute top-4 right-4 opacity-20">
-                                <div className="ornament"></div>
+                            <div className="absolute top-2 right-2 md:top-4 md:right-4 opacity-20">
+                                <div className="ornament scale-75 md:scale-100"></div>
                             </div>
-                            <div className="absolute bottom-4 left-4 opacity-20">
-                                <div className="ornament"></div>
+                            <div className="absolute bottom-2 left-2 md:bottom-4 md:left-4 opacity-20">
+                                <div className="ornament scale-75 md:scale-100"></div>
                             </div>
-                            <div className="absolute bottom-4 right-4 opacity-20">
-                                <div className="ornament"></div>
+                            <div className="absolute bottom-2 right-2 md:bottom-4 md:right-4 opacity-20">
+                                <div className="ornament scale-75 md:scale-100"></div>
                             </div>
                             
                             {/* Content */}
-                            <div key={animationKey} className="relative z-10 text-center space-y-1 md:space-y-3 content-spacing" style={{ overflow: 'visible', padding: '0.5rem 0' }}>
-                                {/* Bismillah */}
-                                <div className="text-center mb-1 md:mb-1 fade-in-up">
-                                    <p className="bismillah">
-                                        بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
-                                    </p>
-                                </div>
-                                
+                            <div key={animationKey} className="relative z-10 text-center space-y-4 md:space-y-6 mobile-space-y">
                                 {/* Title */}
-                                <div className="scale-in py-0.5 my-0.5 md:py-1 md:my-1" style={{ overflow: 'visible', minHeight: 'auto' }}>
-                                    <h1 className={`main-title text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-yellow-600 to-amber-700 pulse-animation ${getTextClass()}`} style={{ display: 'block', visibility: 'visible', opacity: 1, overflow: 'visible', lineHeight: '1.3', padding: '0.5rem 0.25rem', margin: '0', minHeight: 'auto', maxHeight: 'none' }}>
-                                        {t.title}
-                                    </h1>
-                                </div>
+                                <h1 className={`main-title fade-in-up text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-yellow-600 to-amber-700 ${getTextClass()}`}>
+                                    {t.title}
+                                </h1>
                                 
                                 {/* Decorative Line */}
-                                <div className="slide-in-left delay-100 flex items-center justify-center gap-2 md:gap-3 my-1 md:my-3" style={{ overflow: 'visible' }}>
-                                    <div className="h-px bg-gradient-to-r from-transparent via-amber-400 to-amber-600 flex-1 max-w-16"></div>
-                                    <div className="w-2 h-2 rounded-full bg-amber-600 float-animation"></div>
-                                    <div className="h-px bg-gradient-to-r from-amber-600 via-amber-400 to-transparent flex-1 max-w-16"></div>
+                                <div className="fade-in-up delay-100 flex items-center justify-center gap-4 my-6 md:my-8">
+                                    <div className="h-px bg-gradient-to-r from-transparent via-amber-400 to-amber-600 flex-1 max-w-12 md:max-w-20"></div>
+                                    <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-amber-600"></div>
+                                    <div className="h-px bg-gradient-to-r from-amber-600 via-amber-400 to-transparent flex-1 max-w-12 md:max-w-20"></div>
                                 </div>
                                 
                                 {/* Greeting */}
-                                <p className={`fade-in-up delay-200 text-sm md:text-base text-gray-700 leading-tight ${getTextClass()}`}>
+                                <p className={`fade-in-up delay-200 mobile-text-lg md:text-xl text-gray-700 leading-relaxed ${getTextClass()}`}>
                                     {t.greeting}
                                 </p>
                                 
                                 {/* Invitation Text */}
-                                <p className={`slide-in-right delay-200 text-base md:text-lg text-gray-800 leading-tight ${getTextClass()}`}>
+                                <p className={`fade-in-up delay-200 mobile-text-xl md:text-2xl text-gray-800 leading-relaxed ${getTextClass()}`}>
                                     {t.invite}
                                 </p>
                                 
-                                {t.ceremony && (
-                                    <p className={`rotate-in delay-300 text-xl md:text-2xl font-semibold text-emerald-700 ${getTextClass()}`}>
-                                        {t.ceremony}
-                                    </p>
-                                )}
+                                <p className={`fade-in-up delay-300 mobile-text-2xl md:text-3xl font-semibold text-emerald-700 ${getTextClass()}`}>
+                                    {t.ceremony}
+                                </p>
                                 
                                 {/* Of */}
-                                {t.of && (
-                                    <p className={`fade-in-up delay-300 text-sm md:text-base text-gray-700 ${getTextClass()}`}>
-                                        {t.of}
-                                    </p>
-                                )}
+                                <p className={`fade-in-up delay-300 mobile-text-lg md:text-xl text-gray-700 ${getTextClass()}`}>
+                                    {t.of}
+                                </p>
                                 
                                 {/* Groom Name */}
-                                <div className="scale-in delay-300 py-0.5 my-0.5 md:py-1 md:my-1" style={{ overflow: 'visible', minHeight: 'auto' }}>
-                                    <h2 className={`groom-name text-3xl md:text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-yellow-600 to-amber-700 float-animation ${getTextClass()}`} style={{ display: 'block', visibility: 'visible', opacity: 1, overflow: 'visible', lineHeight: '1.3', padding: '0.5rem 0.25rem', margin: '0', minHeight: 'auto', maxHeight: 'none' }}>
-                                        {t.groom}
-                                    </h2>
-                                </div>
+                                <h2 className={`groom-name fade-in-up delay-300 text-3xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-yellow-600 to-amber-700 ${getTextClass()}`} style={{ display: 'block', visibility: 'visible', opacity: 1 }}>
+                                    {t.groom}
+                                </h2>
                                 
                                 {/* Decorative Line */}
-                                <div className="slide-in-right delay-400 flex items-center justify-center gap-2 md:gap-3 my-1 md:my-3">
-                                    <div className="h-px bg-gradient-to-r from-transparent via-emerald-400 to-emerald-600 flex-1 max-w-16"></div>
-                                    <div className="w-2 h-2 rounded-full bg-emerald-600 pulse-animation"></div>
-                                    <div className="h-px bg-gradient-to-r from-emerald-600 via-emerald-400 to-transparent flex-1 max-w-16"></div>
+                                <div className="fade-in-up delay-400 flex items-center justify-center gap-4 my-6 md:my-8">
+                                    <div className="h-px bg-gradient-to-r from-transparent via-emerald-400 to-emerald-600 flex-1 max-w-12 md:max-w-20"></div>
+                                    <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-emerald-600"></div>
+                                    <div className="h-px bg-gradient-to-r from-emerald-600 via-emerald-400 to-transparent flex-1 max-w-12 md:max-w-20"></div>
                                 </div>
                                 
                                 {/* Event Details */}
-                                <div className={`fade-in-up delay-400 space-y-1 md:space-y-1.5 text-gray-800 ${getTextClass()}`}>
-                                    <div className="text-lg md:text-xl font-semibold text-amber-800 scale-in delay-500">
+                                <div className={`fade-in-up delay-400 space-y-3 md:space-y-4 text-gray-800 ${getTextClass()}`}>
+                                    <div className="mobile-text-2xl md:text-3xl font-semibold text-amber-800">
                                         {t.date}
                                     </div>
                                     
-                                    <div className="text-base md:text-lg text-gray-700 slide-in-left delay-500">
-                                        {t.timeLabel && <span className="font-semibold text-emerald-700">{t.timeLabel}</span>} {t.time}
+                                    <div className="mobile-text-xl md:text-2xl text-gray-700">
+                                        <span className="font-semibold text-emerald-700">{t.timeLabel}</span> {t.time}
                                     </div>
                                     
-                                    <div className="text-base md:text-lg text-gray-700 slide-in-right delay-500">
-                                        {t.venueLabel && <span className="font-semibold text-emerald-700">{t.venueLabel}</span>} <span className="font-semibold text-amber-800">{t.venue}</span>
+                                    <div className="mobile-text-xl md:text-2xl text-gray-700">
+                                        <span className="font-semibold text-emerald-700">{t.venueLabel}</span> <span className="font-semibold text-amber-800">{t.venue}</span>
                                     </div>
                                 </div>
                                 
-                                {/* Countdown Timer */}
-                                <div className="fade-in-up delay-500 my-3">
-                                    <div className="flex items-center justify-center gap-2 mb-2">
-                                        <span className="waiting-icon">
-                                            <svg className="w-8 h-8 md:w-10 md:h-10 text-amber-600" fill="currentColor" viewBox="0 0 24 24">
-                                                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" strokeDasharray="60" strokeDashoffset="30">
-                                                    <animate attributeName="stroke-dasharray" values="0 60;30 30;0 60;0 60" dur="2s" repeatCount="indefinite" />
-                                                    <animate attributeName="stroke-dashoffset" values="0;-30;-60;-60" dur="2s" repeatCount="indefinite" />
-                                                </circle>
-                                                <circle cx="12" cy="12" r="6" fill="currentColor" opacity="0.6" />
-                                            </svg>
-                                        </span>
-                                        <h3 className={`text-lg md:text-xl font-semibold text-amber-800 ${getTextClass()}`}>
-                                            {t.countdownTitle}
-                                        </h3>
-                                        <span className="waiting-icon">
-                                            <svg className="w-8 h-8 md:w-10 md:h-10 text-amber-600" fill="currentColor" viewBox="0 0 24 24">
-                                                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" strokeDasharray="60" strokeDashoffset="30">
-                                                    <animate attributeName="stroke-dasharray" values="0 60;30 30;0 60;0 60" dur="2s" repeatCount="indefinite" />
-                                                    <animate attributeName="stroke-dashoffset" values="0;-30;-60;-60" dur="2s" repeatCount="indefinite" />
-                                                </circle>
-                                                <circle cx="12" cy="12" r="6" fill="currentColor" opacity="0.6" />
-                                            </svg>
-                                        </span>
-                                    </div>
-                                    <div className="countdown-container">
-                                        <div className="countdown-item">
-                                            <div className="countdown-number">{countdown.days}</div>
-                                            <div className="countdown-label">{t.days}</div>
-                                        </div>
-                                        <div className="countdown-item">
-                                            <div className="countdown-number">{countdown.hours}</div>
-                                            <div className="countdown-label">{t.hours}</div>
-                                        </div>
-                                        <div className="countdown-item">
-                                            <div className="countdown-number">{countdown.minutes}</div>
-                                            <div className="countdown-label">{t.minutes}</div>
-                                        </div>
-                                        <div className="countdown-item">
-                                            <div className="countdown-number">{countdown.seconds}</div>
-                                            <div className="countdown-label">{t.seconds}</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                {/* Closing Message */}
-                                {t.closingMessage && (
-                                    <div className={`fade-in-up delay-500 pt-2 md:pt-3 text-sm md:text-base text-gray-700 italic leading-normal md:leading-relaxed ${getTextClass()}`}>
-                                        {t.closingMessage}
-                                    </div>
-                                )}
-                                
-                                {/* Action Button */}
-                                <div className="fade-in-up delay-500 pt-2 md:pt-4 flex justify-center items-center">
+                                {/* Action Buttons */}
+                                <div className="fade-in-up delay-400 pt-4 md:pt-6 flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center mobile-buttons">
                                     <button
                                         onClick={handleViewMap}
-                                        className="map-btn text-white px-4 py-1.5 md:px-6 md:py-2 rounded-full text-xs md:text-sm font-semibold shadow-lg flex items-center gap-1.5 md:gap-2 pulse-animation hover:scale-110 transition-transform"
+                                        className="map-btn text-white px-6 md:px-8 py-3 rounded-full mobile-text-lg md:text-lg font-semibold shadow-lg flex items-center gap-2 mobile-button"
                                     >
-                                        <svg className="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                         </svg>
                                         {t.viewMap}
+                                    </button>
+                                    <button
+                                        onClick={handleShare}
+                                        className="share-btn text-white px-6 md:px-8 py-3 rounded-full mobile-text-lg md:text-lg font-semibold shadow-lg flex items-center gap-2 mobile-button"
+                                    >
+                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                                        </svg>
+                                        {t.share}
                                     </button>
                                 </div>
                             </div>
