@@ -48,6 +48,12 @@
             unicode-bidi: bidi-override;
         }
         
+        .punjabi-text {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            direction: rtl;
+            unicode-bidi: bidi-override;
+        }
+        
         .english-text {
             font-family: 'Playfair Display', serif;
             direction: ltr;
@@ -268,7 +274,8 @@
         }
         
         .urdu-text .groom-name,
-        .arabic-text .groom-name {
+        .arabic-text .groom-name,
+        .punjabi-text .groom-name {
             white-space: normal !important;
             word-wrap: break-word !important;
             overflow-wrap: break-word !important;
@@ -320,7 +327,8 @@
         }
         
         .urdu-text .main-title,
-        .arabic-text .main-title {
+        .arabic-text .main-title,
+        .punjabi-text .main-title {
             white-space: normal !important;
             word-wrap: break-word !important;
             overflow-wrap: break-word !important;
@@ -370,50 +378,70 @@
             en: {
                 title: "Walima Invitation",
                 greeting: "With the grace of Almighty Allah,",
-                invite: "We cordially invite you to the",
-                ceremony: "Walima ceremony",
-                of: "of",
+                invite: "We cordially invite you to the Walima ceremony of",
+                ceremony: "",
+                of: "",
                 groom: "Husnain Sardar",
-                date: "17th November 2025",
+                date: "on 17th November 2025",
                 time: "2:00 PM",
                 venue: "At Home",
-                venueLabel: "Venue:",
-                timeLabel: "Time:",
+                venueLabel: "Time:",
+                timeLabel: "Venue:",
+                closingMessage: "We would be deeply honored and grateful for your presence.",
                 share: "Share Invitation",
                 shareMessage: "You're invited to the Walima ceremony of Husnain Sardar on 17th November 2025 at 2:00 PM. Venue: At Home",
                 viewMap: "View on Map"
             },
             urdu: {
                 title: "ولیمہ دعوت",
-                greeting: "اللہ تعالیٰ کے فضل و کرم سے،",
+                greeting: "اللہ تعالیٰ کے فضل و کرم سے",
                 invite: "ہم آپ کو بصد احترام دعوت دیتے ہیں",
-                ceremony: "ولیمہ کی تقریب",
-                of: "کے",
+                ceremony: "ولیمہ کی تقریب میں شرکت کے لیے",
+                of: "",
                 groom: "حسنین سردار",
-                date: "17 نومبر 2025",
-                time: "بعد دوپہر 2 بجے",
-                venue: "گھر پر",
-                venueLabel: "مقام:",
-                timeLabel: "وقت:",
+                date: "بتاریخ 17 نومبر 2025",
+                time: "بوقت دوپہر 2 بجے",
+                venue: "بمقام گھر پر",
+                venueLabel: "",
+                timeLabel: "",
+                closingMessage: "آپ کی شرکت ہمارے لیے باعثِ مسرت اور شکریہ کا باعث ہوگی۔",
                 share: "دعوت نامہ شیئر کریں",
-                shareMessage: "آپ کو حسنین سردار کے ولیمہ کی تقریب میں 17 نومبر 2025 کو دوپہر 2 بجے مدعو کیا جاتا ہے۔ مقام: گھر پر",
+                shareMessage: "آپ کو حسنین سردار کے ولیمہ کی تقریب میں شرکت کے لیے بتاریخ 17 نومبر 2025 بوقت دوپہر 2 بجے بمقام گھر پر دعوت دی جاتی ہے",
                 viewMap: "نقشے پر دیکھیں"
             },
             ar: {
                 title: "دعوة الوليمة",
-                greeting: "بفضل الله تعالى،",
-                invite: "يسرنا أن ندعوكم بحرارة لحضور",
-                ceremony: "حفل الوليمة",
-                of: "لـ",
-                groom: "حسنین سردار",
-                date: "17 نوفمبر 2025",
-                time: "الساعة 2:00 بعد الظهر",
+                greeting: "بفضل الله ورحمته",
+                invite: "نتشرف بدعوتكم لحضور وليمة زفاف",
+                ceremony: "",
+                of: "",
+                groom: "الحاج/حسنین سردار",
+                date: "بتاريخ 17 نوفمبر 2025",
+                time: "الساعة 2:00 ظهرًا",
                 venue: "في المنزل",
-                venueLabel: "المكان:",
-                timeLabel: "الوقت:",
+                venueLabel: "الوقت:",
+                timeLabel: "المكان:",
+                closingMessage: "حضوركم تشرفنا وتسعدنا، فشكرًا لتلبيتكم الدعوة.",
                 share: "مشاركة الدعوة",
                 shareMessage: "أنت مدعو لحفل الوليمة لحسنین سردار في 17 نوفمبر 2025 الساعة 2:00 بعد الظهر. المكان: في المنزل",
                 viewMap: "عرض على الخريطة"
+            },
+            punjabi: {
+                title: "ولیما دعوت",
+                greeting: "اللہ تعالیٰ دے فضل تے کرم نال",
+                invite: "اسی تہانوں عزت نال دعوت دیندے آں",
+                ceremony: "ولیما دی تقریب وِچ شرکت لئی",
+                of: "",
+                groom: "حسنین سردار",
+                date: "مورخہ 17 نومبر 2025",
+                time: "وِلے دوپہر 2 بجے",
+                venue: "جائے گھر تے",
+                venueLabel: "",
+                timeLabel: "",
+                closingMessage: "تُہاڈی شرکت ساڈے لئی خوشی تے شکرگزاری دا باعث بنوے گی۔",
+                share: "دعوت نامہ شیئر کرو",
+                shareMessage: "تہانوں حسنین سردار دی ولیما دی تقریب وِچ شرکت لئی مورخہ 17 نومبر 2025 وِلے دوپہر 2 بجے جائے گھر تے دعوت دتی جاندی اے",
+                viewMap: "نقشے تے ویکھو"
             }
         };
         
@@ -431,6 +459,7 @@
             const getTextClass = () => {
                 if (language === 'ar') return 'arabic-text';
                 if (language === 'urdu') return 'urdu-text';
+                if (language === 'punjabi') return 'punjabi-text';
                 return 'english-text';
             };
             
@@ -464,18 +493,18 @@
                 <div className="h-screen pattern-bg py-2 px-4 overflow-hidden flex flex-col">
                     {/* Language Toggle */}
                     <div className="flex justify-end mb-2 max-w-4xl mx-auto w-full">
-                        <div className="flex gap-2 bg-white rounded-full p-1 shadow-lg scale-in">
+                        <div className="flex flex-wrap gap-1 bg-white rounded-full p-1 shadow-lg scale-in">
                             <button
                                 onClick={() => setLanguage('en')}
-                                className={`lang-btn px-3 py-1 rounded-full text-xs font-semibold transition-all ${
+                                className={`lang-btn px-2 py-1 rounded-full text-xs font-semibold transition-all ${
                                     language === 'en' ? 'active text-white' : 'text-gray-700 hover:bg-gray-100'
                                 }`}
                             >
-                                🇬🇧 English
+                                🇬🇧 EN
                             </button>
                             <button
                                 onClick={() => setLanguage('urdu')}
-                                className={`lang-btn px-3 py-1 rounded-full text-xs font-semibold transition-all ${
+                                className={`lang-btn px-2 py-1 rounded-full text-xs font-semibold transition-all ${
                                     language === 'urdu' ? 'active text-white' : 'text-gray-700 hover:bg-gray-100'
                                 }`}
                             >
@@ -483,11 +512,19 @@
                             </button>
                             <button
                                 onClick={() => setLanguage('ar')}
-                                className={`lang-btn px-3 py-1 rounded-full text-xs font-semibold transition-all ${
+                                className={`lang-btn px-2 py-1 rounded-full text-xs font-semibold transition-all ${
                                     language === 'ar' ? 'active text-white' : 'text-gray-700 hover:bg-gray-100'
                                 }`}
                             >
                                 🇸🇦 العربية
+                            </button>
+                            <button
+                                onClick={() => setLanguage('punjabi')}
+                                className={`lang-btn px-2 py-1 rounded-full text-xs font-semibold transition-all ${
+                                    language === 'punjabi' ? 'active text-white' : 'text-gray-700 hover:bg-gray-100'
+                                }`}
+                            >
+                                🇵🇰 پنجابی
                             </button>
                         </div>
                     </div>
@@ -542,14 +579,18 @@
                                     {t.invite}
                                 </p>
                                 
-                                <p className={`rotate-in delay-300 text-xl md:text-2xl font-semibold text-emerald-700 ${getTextClass()}`}>
-                                    {t.ceremony}
-                                </p>
+                                {t.ceremony && (
+                                    <p className={`rotate-in delay-300 text-xl md:text-2xl font-semibold text-emerald-700 ${getTextClass()}`}>
+                                        {t.ceremony}
+                                    </p>
+                                )}
                                 
                                 {/* Of */}
-                                <p className={`fade-in-up delay-300 text-sm md:text-base text-gray-700 ${getTextClass()}`}>
-                                    {t.of}
-                                </p>
+                                {t.of && (
+                                    <p className={`fade-in-up delay-300 text-sm md:text-base text-gray-700 ${getTextClass()}`}>
+                                        {t.of}
+                                    </p>
+                                )}
                                 
                                 {/* Groom Name */}
                                 <div className="scale-in delay-300 py-1 my-1" style={{ overflow: 'visible', minHeight: 'auto' }}>
@@ -572,13 +613,20 @@
                                     </div>
                                     
                                     <div className="text-base md:text-lg text-gray-700 slide-in-left delay-500">
-                                        <span className="font-semibold text-emerald-700">{t.timeLabel}</span> {t.time}
+                                        {t.timeLabel && <span className="font-semibold text-emerald-700">{t.timeLabel}</span>} {t.time}
                                     </div>
                                     
                                     <div className="text-base md:text-lg text-gray-700 slide-in-right delay-500">
-                                        <span className="font-semibold text-emerald-700">{t.venueLabel}</span> <span className="font-semibold text-amber-800">{t.venue}</span>
+                                        {t.venueLabel && <span className="font-semibold text-emerald-700">{t.venueLabel}</span>} <span className="font-semibold text-amber-800">{t.venue}</span>
                                     </div>
                                 </div>
+                                
+                                {/* Closing Message */}
+                                {t.closingMessage && (
+                                    <div className={`fade-in-up delay-500 pt-2 text-base md:text-lg text-gray-700 italic leading-relaxed ${getTextClass()}`}>
+                                        {t.closingMessage}
+                                    </div>
+                                )}
                                 
                                 {/* Action Button */}
                                 <div className="fade-in-up delay-500 pt-3 flex justify-center items-center">
