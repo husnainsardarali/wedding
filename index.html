@@ -280,7 +280,6 @@
             }
             
             .urdu-text .groom-name,
-            .arabic-text .groom-name,
             .punjabi-text .groom-name,
             .saraiki-text .groom-name {
                 white-space: normal !important;
@@ -318,11 +317,20 @@
         .countdown-watermark {
             position: absolute;
             bottom: 2%;
+            left: 0;
             z-index: 1;
             pointer-events: none;
             opacity: 0.75;
             transform: rotate(-90deg);
             transform-origin: top left;
+        }
+        
+        /* Ensure countdown stays on left for RTL languages */
+        .urdu-text .countdown-watermark,
+        .punjabi-text .countdown-watermark,
+        .saraiki-text .countdown-watermark {
+            left: 0 !important;
+            right: auto !important;
         }
             
             .countdown-watermark-title {
@@ -402,9 +410,22 @@
             
             @media (max-width: 640px) {
                 .countdown-watermark {
-                    bottom: 3%;
-                    left: 3%;
-                    transform: rotate(-20deg);
+                    position: absolute;
+                    bottom: 2%;
+                    left: 0;
+                    z-index: 1;
+                    pointer-events: none;
+                    opacity: 0.75;
+                    transform: rotate(-90deg);
+                    transform-origin: top left;
+                }
+                
+                /* Ensure countdown stays on left for RTL languages on mobile */
+                .urdu-text .countdown-watermark,
+                .punjabi-text .countdown-watermark,
+                .saraiki-text .countdown-watermark {
+                    left: 0 !important;
+                    right: auto !important;
                 }
                 .countdown-watermark-title {
                     font-size: 1rem;
@@ -516,7 +537,6 @@
             }
             
             .urdu-text .main-title,
-            .arabic-text .main-title,
             .punjabi-text .main-title,
             .saraiki-text .main-title {
                 white-space: normal !important;
@@ -691,28 +711,6 @@
                     minutes: "منٹ",
                     seconds: "سیکنڈ"
                 },
-                ar: {
-                    title: "دعوة الوليمة",
-                    greeting: "بفضل الله ورحمته",
-                    invite: "نتشرف بدعوتكم لحضور وليمة زفاف",
-                    ceremony: "",
-                    of: "",
-                    groom: "حسنین سردار",
-                    date: "بتاريخ 17 نوفمبر 2025",
-                    time: "الساعة 2:00 ظهرًا",
-                    venue: "في المنزل",
-                    venueLabel: "المكان:",
-                    timeLabel: "الوقت:",
-                    closingMessage: "حضوركم تشرفنا وتسعدنا، فشكرًا لتلبيتكم الدعوة.",
-                    share: "مشاركة الدعوة",
-                    shareMessage: "أنت مدعو لحفل الوليمة لحسنین سردار في 17 نوفمبر 2025 الساعة 2:00 بعد الظهر. المكان: في المنزل",
-                    viewMap: "عرض على الخريطة",
-                    countdownTitle: "الوقت المتبقي",
-                    days: "أيام",
-                    hours: "ساعات",
-                    minutes: "دقائق",
-                    seconds: "ثواني"
-                },
                 punjabi: {
                     title: "ولیما دعوت",
                     greeting: "اللہ تعالیٰ دے فضل تے کرم نال",
@@ -798,7 +796,6 @@
                 
                 // Set font direction based on language
                 const getTextClass = () => {
-                    if (language === 'ar') return 'arabic-text';
                     if (language === 'urdu') return 'urdu-text';
                     if (language === 'punjabi') return 'punjabi-text';
                     if (language === 'saraiki') return 'saraiki-text';
@@ -851,14 +848,6 @@
                                     }`}
                                 >
                                     🇵🇰 اردو
-                                </button>
-                                <button
-                                    onClick={() => setLanguage('ar')}
-                                    className={`lang-btn px-2 py-1 rounded-full text-xs font-semibold transition-all ${
-                                        language === 'ar' ? 'active text-white' : 'text-gray-700 hover:bg-gray-100'
-                                    }`}
-                                >
-                                    🇸🇦 العربية
                                 </button>
                                 <button
                                     onClick={() => setLanguage('punjabi')}
