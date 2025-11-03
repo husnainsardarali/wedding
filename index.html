@@ -60,6 +60,12 @@
                 unicode-bidi: bidi-override;
             }
             
+            .pashto-text {
+                font-family: 'Noto Naskh Arabic', serif;
+                direction: rtl;
+                unicode-bidi: bidi-override;
+            }
+            
             .english-text {
                 font-family: 'Playfair Display', serif;
                 direction: ltr;
@@ -281,7 +287,8 @@
             
             .urdu-text .groom-name,
             .punjabi-text .groom-name,
-            .saraiki-text .groom-name {
+            .saraiki-text .groom-name,
+            .pashto-text .groom-name {
                 white-space: normal !important;
                 word-wrap: break-word !important;
                 overflow-wrap: break-word !important;
@@ -328,7 +335,8 @@
         /* Ensure countdown stays on left for RTL languages */
         .urdu-text .countdown-watermark,
         .punjabi-text .countdown-watermark,
-        .saraiki-text .countdown-watermark {
+        .saraiki-text .countdown-watermark,
+        .pashto-text .countdown-watermark {
             left: 0 !important;
             right: auto !important;
         }
@@ -423,7 +431,8 @@
                 /* Ensure countdown stays on left for RTL languages on mobile */
                 .urdu-text .countdown-watermark,
                 .punjabi-text .countdown-watermark,
-                .saraiki-text .countdown-watermark {
+                .saraiki-text .countdown-watermark,
+                .pashto-text .countdown-watermark {
                     left: 0 !important;
                     right: auto !important;
                 }
@@ -538,7 +547,8 @@
             
             .urdu-text .main-title,
             .punjabi-text .main-title,
-            .saraiki-text .main-title {
+            .saraiki-text .main-title,
+            .pashto-text .main-title {
                 white-space: normal !important;
                 word-wrap: break-word !important;
                 overflow-wrap: break-word !important;
@@ -754,6 +764,28 @@
                     hours: "گھنٹے",
                     minutes: "منٹ",
                     seconds: "سیکنڈ"
+                },
+                pashto: {
+                    title: "ولیمه دعوت",
+                    greeting: "د الله تعالی په فضل او رحمت سره",
+                    invite: "موږ ستاسو ته په درناوی سره دعوت ورکوو",
+                    ceremony: "د ولیمه مراسم کې د حاضری لپاره",
+                    of: "",
+                    groom: "حسنین سردار",
+                    date: "د ۱۷ نومبر ۲۰۲۵ په نیټه",
+                    time: "د ماسپښین ۲ بجو",
+                    venue: "په کور کې",
+                    venueLabel: "",
+                    timeLabel: "",
+                    closingMessage: "ستاسو حاضری زموږ لپاره د خوښۍ او د مننې سبب به وي.",
+                    share: "دعوتنامه شریکه کړئ",
+                    shareMessage: "تاسو د حسنین سردار د ولیمه مراسمو ته د ۱۷ نومبر ۲۰۲۵ د ماسپښین ۲ بجو په کور کې دعوت شوي یاست",
+                    viewMap: "په نقشه کې وګورئ",
+                    countdownTitle: "پاتې وخت",
+                    days: "ورځې",
+                    hours: "ساعته",
+                    minutes: "دقیقې",
+                    seconds: "ثانیې"
                 }
             };
             
@@ -799,6 +831,7 @@
                     if (language === 'urdu') return 'urdu-text';
                     if (language === 'punjabi') return 'punjabi-text';
                     if (language === 'saraiki') return 'saraiki-text';
+                    if (language === 'pashto') return 'pashto-text';
                     return 'english-text';
                 };
                 
@@ -864,6 +897,14 @@
                                     }`}
                                 >
                                     🇵🇰 سرائیکی
+                                </button>
+                                <button
+                                    onClick={() => setLanguage('pashto')}
+                                    className={`lang-btn px-2 py-1 rounded-full text-xs font-semibold transition-all ${
+                                        language === 'pashto' ? 'active text-white' : 'text-gray-700 hover:bg-gray-100'
+                                    }`}
+                                >
+                                    🇦🇫 پښتو
                                 </button>
                             </div>
                         </div>
